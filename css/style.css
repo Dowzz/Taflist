@@ -990,7 +990,7 @@ i.tw2{
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     border-top: none;
-    padding: 3px 0;
+    padding: 10px;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     font-size: 0.85em;
@@ -1196,7 +1196,6 @@ a.btn_3:hover{
 	margin-bottom:3em;
 }
 .icon-service .icon {
-    float: left;
     width: 72px;
     height: 72px;
     line-height: 72px;
@@ -2777,4 +2776,17 @@ ul.grid-1 li.grid-1_right h4, ul.grid-1 li.grid-1_left h4 {
     background: url(../images/arrows.png) no-repeat -18px 0px;
     background-size: 184%;
 }
+
+}
+.myborder{
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5px;
+}
+.mybutton{
+    margin:10px;
+}
+#mytable{
+    padding: 10px;
+    width: fit-content;
 }

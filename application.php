@@ -26,7 +26,7 @@
         header('Location: login.php');
     }
 
-    $userid = $_SESSION['userid'];
+    $empid = $_SESSION['userid'];
 
     ?>
     <div class="container">
@@ -55,12 +55,11 @@
                     <tbody id="mytable">
                         <?php
 
-                        $sql = "select application.appid, application.userid, user.name , jobs.title, employer.empid, application.cv, application.date
+                        $sql = "select application.appid, user.name , jobs.title, employer.empid, application.cv, application.date
                               from application
                               INNER join jobs on jobs.jobid = application.jobid
                               INNER join employer on employer.empid = jobs.empid
                               INNER join user on user.userid = application.userid
-                              where application.userid = '$userid'
                               ";
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {

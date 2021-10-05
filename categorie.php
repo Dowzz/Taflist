@@ -3,125 +3,162 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+    <title>Upload Job | Jobs Portal</title>
+    <?php
+
+    include('header_link.php');
+    include('connect.php');
+
+
+
+
+    ?>
 </head>
 
 <body>
 
-    <?php include('header.php') ?>
-    <?php include('connect.php') ?>
-
     <?php
 
-    error_reporting(0);
+    include('header.php');
 
-    $catid = $_GET['catid'];
-    $sql = "SELECT * FROM `categories` where catid = '$catid' ";
-    $rs = mysqli_query($con, $sql);
-    $catdata = mysqli_fetch_array($rs);
-
-
-    if ($_GET['delid']) {
-        $delid = $_GET['delid'];
-        $sql1 = "delete from categories where catid='$delid'";
-        mysqli_query($con, $sql1);
-        header('Location: categorie.php');
+    if (!isset($_SESSION['userid'])) {
+        header('Location: login.php');
     }
 
 
+    $empid = $_SESSION['userid'];
+
+
+    // get data from id 
+    error_reporting(0);
+    $catid = $_GET['catid'];
+
+    $sql = "select * from categories where catid='$catid'";
+    $rs = mysqli_query($con, $sql);
+    $catdata = mysqli_fetch_array($rs);
+
+    // delete category
+    if (isset($_GET['delcatid'])) {
+        $catid = $_GET['delcatid'];
+        $sql = "delete from categories where catid='$catid'";
+        mysqli_query($con, $sql);
+        header('Location: categories.php');
+    }
+
     ?>
-
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="login-content">
-                    <form action="categorie.php" method="post">
-                        <div class="section-title">
-                            <h3>Catégories</h3>
-                        </div>
-                        <div class="textbox-wrap">
-                            <div class="input-group">
-                                <span class="input-group-addon "><i class="fa fa-user"></i></span>
-                                <input type='hidden' name='cid' value="<?= $catdata['catid'] ?>">
-                                <input type="text" required="required" value="<?= $catdata['name'] ?>" name="Name"
-                                    class="form-control" placeholder="Nom">
-                            </div>
-                        </div>
-                        <div class="login-btn">
-                            <input type="submit" name="addcat" value="Add Category">
-                            <input type="submit" name="updatecat" value="Update">
-                        </div>
-                    </form>
 
 
-                </div>
+
+        <div class="single">
+            <h1>Add Categories</h1>
+            <div class="col-md-6">
+                <form action="categorie.php" method="post">
+
+                    <!-- for get data from id in view table -->
+                    <input type="hidden" name="catid" value="<?= $catdata['catid'] ?>" class="form-control">
+
+                    <div class="form-group">
+                        <input type="text" placeholder="enter a name" name="Name" value="<?= $catdata['name'] ?>"
+                            class="form-control">
+                    </div>
+
+                    <input type="submit" name="addcat" value="Add Category" class="btn btn-primary">
+                    <input type="submit" name="updatecat" value="Update Category" class="btn btn-info">
+
+                </form>
+
 
             </div>
-            <div class="col-lg-8">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" id="myinput" placeholder="search ......" class="form-control">
+                </div>
+
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </tr>
-                    <?php
-                    $sql = "SELECT * FROM `categories`";
-                    $rs = mysqli_query($con, $sql);
-                    while ($data = mysqli_fetch_array($rs)) {
-                    ?>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                    <tr>
-                        <td><?= $data['catid'] ?></td>
-                        <td><?= $data['name'] ?></td>
-                        <td>
-                            <a href="categorie.php?catid=<?= $data['catid'] ?>" class="btn btn-primary">Edition</a>
-                            <a href="categorie.php?delid=<?= $data['catid'] ?>" class="btn btn-danger">Supression</a>
-                        </td>
-                    </tr>
+                    <tbody id="mytable">
+                        <?php
 
-                    <?php
-                    }
-                    ?>
+                        $sql = "select * from categories";
+                        $rs = mysqli_query($con, $sql);
+                        while ($data = mysqli_fetch_array($rs)) {
+                        ?>
 
+                        <tr>
+                            <td><?= $data['catid'] ?></td>
+                            <td><?= $data['name'] ?></td>
 
+                            <td>
+                                <a href="categories.php?catid=<?= $data['catid'] ?>" class="btn btn-info"> Edit</a>
+                                <a href="categories.php?delcatid=<?= $data['catid'] ?>" class="btn btn-danger">
+                                    Delete</a>
+                            </td>
+                        </tr>
+
+                        <?php
+                        }
+                        ?>
+                    </tbody>
                 </table>
 
             </div>
+
         </div>
+
+
+        <?php
+
+        if (isset($_POST['addcat'])) {
+
+            $catname = $_POST['Name'];
+            $sql = "insert into categories (name) values('$catname')";
+            if (mysqli_query($con, $sql)) {
+                echo "<script>alert('Add Category Successfully')</script>";
+            } else {
+                echo "<script>alert('Not Added')</script>";
+            }
+        }
+
+        if (isset($_POST['updatecat'])) {
+
+            $catid = $_POST['catid'];
+            $catname = $_POST['Name'];
+            $sql = "update categories set Name='$catname' where catid='$catid'";
+            if (mysqli_query($con, $sql)) {
+                echo "<script>alert('Update Category Successfully')</script>";
+            } else {
+                echo "<script>alert('Not Updated')</script>";
+            }
+        }
+        ?>
+
     </div>
 
+    <script>
+    $(document).ready(function() {
+        $("#myinput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#mytable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    </script>
 
-    <?php include('footer.php') ?>
+    <br><br>
+    <?php include('footer.php'); ?>
+
 
 </body>
 
 </html>
-
-<?php
-//update
-if (isset($_POST['updatecat'])) {
-    $cid = $_POST['cid'];
-    $catname = $_POST['Name'];
-
-    if (mysqli_query($con, "UPDATE `categories` SET `name`='$catname' WHERE catid='$cid' ")) {
-        echo "<script> alert ('catégorie mise a jour')</script>";
-    } else {
-        echo "<script> alert ('OOps erreur !')</script>";
-    }
-}
-
-
-//ajout
-if (isset($_POST['addcat'])) {
-    $catname = $_POST['Name'];
-
-    //    print_r($_POST);
-    if (mysqli_query($con, "INSERT INTO `categories`(`name`) VALUES ('$catname')")) {
-        echo "<script> alert ('catégorie Enregistré')</script>";
-    } else {
-        echo "<script> alert ('OOps erreur !')</script>";
-    }
-}
-?>
