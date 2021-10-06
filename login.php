@@ -65,25 +65,27 @@ if (isset($_POST['login'])) {
         $role = $data[4];
         $userid = $data[0];
         $email = $data[3];
+        $name = $data[1];
 
 
         $_SESSION['role'] = $role;
         $_SESSION['userid'] = $userid;
         $_SESSION['email'] = $email;
+        $_SESSION['name'] = $name;
 
 
         if ($role == 1) {
 
             echo "<script>window.location.href='admin.php';</script>";
-        } else if ($role == 2) {
+        } else if ($role == 2 || $role == 3) {
             echo "<script> alert ('compte en attente')</script>";
-        } else if ($role == 3) {
-
-            echo "<script>window.location.href='index.php';</script>";
         } else if ($role == 4) {
 
             echo "<script>window.location.href='index.php';</script>";
         } else if ($role == 5) {
+
+            echo "<script>window.location.href='index.php';</script>";
+        } else if ($role == 6) {
 
             echo "<script>window.location.href='index.php';</script>";
         } else {
@@ -93,8 +95,9 @@ if (isset($_POST['login'])) {
 }
 
 
-//admin role = 0
-//waiting role = 1
-//consultant role = 2
-//employeur role = 3
-//candidat role = 4
+//admin role = 1
+//waiting role = 2
+//waiting role consultant = 3
+//consultant role = 4
+//employeur role = 5
+//candidat role = 6

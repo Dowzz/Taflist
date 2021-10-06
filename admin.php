@@ -16,6 +16,7 @@
 <body>
 
     <?php
+    session_start();
     include('header.php');
     if (!isset($_SESSION['userid'])) {
         header('Location: login.php');
@@ -23,7 +24,7 @@
     ?>
 
     <h1>Welcome
-        <? echo $_SESSION['name'] ?>
+
     </h1>
 
     <br><br>

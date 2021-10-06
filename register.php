@@ -70,8 +70,9 @@ if (isset($_POST['register'])) {
     };
 }
 
-//admin role = 0
-//waiting role = 1
-//consultant role = 2
-//employeur role = 3
-//candidat role = 4
+//admin role = 1
+//waiting role = 2
+//waiting role consultant = 3
+//consultant role = 4
+//employeur role = 5
+//candidat role = 6

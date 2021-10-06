@@ -27,32 +27,32 @@
 							  <li><a href="categorie.php">Catégories</a></li>
 							  <li><a href="uploadjob.php">Jobs</a></li>
 							  <li><a href="application.php">postulants en attente</a></li>
-							  <li><a href="logout.php">Logout</a></li>
+							  <li><a href="logout.php">Deconnexion</a></li>
 							  ';
-                } else if ($type == 3) {
+                } else if ($type == 4) {
                     echo '     <li><a href="admin.php">Dashboard</a></li>
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="viewjobs.php">liste des jobs</a></li>
-							   <li><a href="logout.php">Logout</a></li>
-							';
-                } else if ($type == 4) {
-                    echo '
-							   <li><a href="index.php">Home</a></li>
-							   <li><a href="uploadjob.php">Ajouter un job</a></li>
-                               <li><a href="viewjobs.php">liste des jobs</a></li>
-							   <li><a href="logout.php">Logout</a></li>
+							   <li><a href="logout.php">Deconnexion</a></li>
 							';
                 } else if ($type == 5) {
                     echo '
-							   <li><a href="index.php">Home</a></li>
+							   <li><a href="index.php">Accueil</a></li>
+							   <li><a href="uploadjob.php">Ajouter un job</a></li>
+                               <li><a href="viewjobs.php">liste des jobs</a></li>
+							   <li><a href="logout.php">Deconnexion</a></li>
+							';
+                } else if ($type == 6) {
+                    echo '
+							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="application.php">Candidature</a></li>
                                <li><a href="profil.php">Profil</a></li>
-							   <li><a href="logout.php">Logout</a></li>
+							   <li><a href="logout.php">Deconnexion</a></li>
 							';
                 } else {
                     echo '
-							   <li><a href="login.php">Login</a></li>
-						       <li><a href="register.php">Register</a></li>
+							   <li><a href="login.php">Connexion</a></li>
+						       <li><a href="register.php">Inscription</a></li>
 							  ';
                 }
 
