@@ -51,14 +51,30 @@
 
     $sql = "select * from user where role = 2";
     $rs = mysqli_query($con, $sql);
+    $data = mysqli_fetch_array($rs);
+
+
 
 
     ?>
-    <?php include('footer.php'); ?>
-    <table>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Role demandé</th>
+        </tr>
+        <tr>
+            <td><?= $data['name'] ?></td>
+            <td><?= $data['email'] ?></td>
+            <td></td>
+            <td><a href="admin.php" class="btn btn-primary">Valider le compte</a>
+                <a href="admin.php" class="btn btn-danger">Supprimer le compte</a>
+            </td>
+        </tr>
 
     </table>
-
+    <?php include('footer.php'); ?>
 </body>
 
 </html>
