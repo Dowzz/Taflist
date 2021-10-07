@@ -52,15 +52,27 @@
                 } else {
                     echo '
 							   <li><a href="login.php">Connexion</a></li>
-						       <li><a href="register.php">Inscription</a></li>
+                               
+                                   
+                                   <li class="dropdown">
+                                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscription<b class="caret"></b></a>
+                                       <ul class="dropdown-menu">
+                                           <li><a href="register.php?id=Recruteur&amp;roletype=2">Recruteur</a></li>
+                                           <li><a href="register.php?id=Candidat&amp;roletype=3">Candidat</a></li>
+                                           
+                                       </ul>
+                                   </li>
+                                   
+                         
 							  ';
                 }
 
                 //admin role = 1
-                //waiting role = 2
-                //consultant role = 3
-                //employeur role = 4
-                //candidat role = 5
+                //waiting role employeur= 2
+                //waiting role candidat = 3
+                //consultant role = 4
+                //employeur role = 5
+                //candidat role = 6
                 ?>
 
 

@@ -22,18 +22,18 @@
         header('Location: login.php');
     }
     //admin role = 1
-    //waiting role = 2
-    //waiting role consultant = 3
+    //waiting role employeur= 2
+    //waiting role candidat = 3
     //consultant role = 4
     //employeur role = 5
     //candidat role = 6
     ?>
 
-    <h1>Welcome <?php echo $_SESSION['name'] ?>
+    <h1 class="mytitle">Welcome <?php echo $_SESSION['name'] ?>
     </h1>
     <?php
     if ($_SESSION['role'] == 1) {
-    ?><span>Administrateur</span>
+    ?><p class="mytitle">Administrateur</p>
     <?php
     } else if ($_SESSION['role'] == 4) {
     ?><span>Consultant</span>
@@ -46,10 +46,18 @@
     <?php
     }
     ?>
-
-
     <br><br>
+    <?php
+
+    $sql = "select * from user where role = 2";
+    $rs = mysqli_query($con, $sql);
+
+
+    ?>
     <?php include('footer.php'); ?>
+    <table>
+
+    </table>
 
 </body>
 

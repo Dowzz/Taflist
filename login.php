@@ -13,6 +13,7 @@
 <body>
     <?php
     include('header.php');
+
     ?>
 
     <div class="container">
@@ -54,12 +55,15 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "select * from user where email = '$email' and password = '$password' ";
+
+
+    $sql = "select * from user where email = '$email'";
+
     $rs = mysqli_query($con, $sql);
+    $data = mysqli_fetch_array($rs);
+    $dbpassword = $data['h_password'];
 
-    if (mysqli_num_rows($rs) > 0) {
-
-        $data = mysqli_fetch_array($rs);
+    if (password_verify($password, $dbpassword)) {
 
         session_start();
         $role = $data[4];
@@ -96,8 +100,8 @@ if (isset($_POST['login'])) {
 
 
 //admin role = 1
-//waiting role = 2
-//waiting role consultant = 3
+//waiting role employeur= 2
+//waiting role candidat = 3
 //consultant role = 4
 //employeur role = 5
 //candidat role = 6
