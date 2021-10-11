@@ -32,7 +32,7 @@
                 } else if ($type == "Consultant") {
                     echo '     <li><a href="admin.php">Dashboard</a></li>
 							   <li><a href="index.php">Accueil</a></li>
-							   <li><a href="viewjobs.php">liste postulants</a></li>
+                               <li><a href="uploadjob.php">liste des jobs</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
                 } else if ($type == "Recruteur") {

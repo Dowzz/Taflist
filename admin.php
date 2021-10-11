@@ -73,6 +73,7 @@
                         <input type="hidden" name="var" value="<?= $data['userid'] ?>">
                         <input type="hidden" name="status" value="<?= $data['role'] ?>">
                         <input type="submit" name="validate" value="Validation" class="btn btn-primary">
+                        <input type="submit" name="upgrade" value="Passer consultant" class="btn btn-success">
                         <input type="submit" name="delete" value="Supression" class="btn btn-danger">
             </form>
             </td>
@@ -85,8 +86,6 @@
             if (isset($_POST['validate'])) {
                 $var = $_POST['var'];
                 $status = $_POST['status'];
-                var_dump($status);
-
                 if ($status == "waitingrec") {
                     $role = "Recruteur";
                 } else {
@@ -99,6 +98,27 @@
                     echo "<script>alert('Error')</script>";
                 }
             }
+            if (isset($_POST['upgrade'])) {
+                $var = $_POST['var'];
+                $status = $_POST['status'];
+                $role = 'Consultant';
+                $sql = "UPDATE user set role= '$role' where userid = '$var'";
+                if (mysqli_query($con, $sql)) {
+                    echo "<script>alert('Consultant crée')</script>";
+                } else {
+                    echo "<script>alert('Error')</script>";
+                }
+            }
+            if (isset($_POST['delete'])) {
+                $var = $_POST['var'];
+                $sql = "DELETE FROM `user` WHERE userid = '$var'";
+                if (mysqli_query($con, $sql)) {
+                    echo "<script>alert('Demande supprimé')</script>";
+                } else {
+                    echo "<script>alert('Error')</script>";
+                }
+            }
+
 
             ?>
         </tbody>
