@@ -76,21 +76,11 @@ body a{
     font-weight: 300;
 }
 .banner{
-	background:url(../images/banner.jpg)no-repeat center top;
-	background-size:cover;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    min-height:630px;	
+	background:url(../images/banner.jpg)no-repeat center;
+    width: 100%; 
+    min-height:480px;	
 }
-.banner_1{
-	background:url(../images/banner_1.jpg)no-repeat center top;
-	background-size:cover;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    min-height:200px;	
-}
+
 #search_wrapper1{
 	margin-top:3em;
 }
@@ -1541,7 +1531,8 @@ label.col-md-3.control-lable {
 .radio label, .checkbox label, label {
     font-size: 0.85em;
     font-weight: 300;
-    vertical-align: middle;
+    margin-right: ;
+    
 }
 .radios label:first-child {
     margin-left: 0;

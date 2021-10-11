@@ -81,15 +81,15 @@ if (isset($_POST['login'])) {
         if ($role == "admin") {
 
             echo "<script>window.location.href='admin.php';</script>";
-        } else if ($role == 2 || $role == 3) {
+        } else if ($role == "waitingrec" || $role == "waitingcan") {
             echo "<script> alert ('Compte en attente')</script>";
-        } else if ($role == "consultant") {
+        } else if ($role == "Consultant") {
 
             echo "<script>window.location.href='index.php';</script>";
-        } else if ($role == "recruteur") {
+        } else if ($role == "Recruteur") {
 
             echo "<script>window.location.href='index.php';</script>";
-        } else if ($role == "candidat") {
+        } else if ($role == "Candidat") {
 
             echo "<script>window.location.href='index.php';</script>";
         } else {

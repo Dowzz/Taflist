@@ -25,24 +25,24 @@
                     echo '
 							  <li><a href="admin.php">Dashboard</a></li>
 							  <li><a href="categorie.php">Catégories</a></li>
-							  <li><a href="uploadjob.php">Jobs</a></li>
+							  <li><a href="uploadjob.php">liste des jobs</a></li>
 							  <li><a href="application.php">postulants en attente</a></li>
 							  <li><a href="logout.php">Deconnexion</a></li>
 							  ';
-                } else if ($type == "consultant") {
+                } else if ($type == "Consultant") {
                     echo '     <li><a href="admin.php">Dashboard</a></li>
 							   <li><a href="index.php">Accueil</a></li>
-							   <li><a href="viewjobs.php">liste des jobs</a></li>
+							   <li><a href="viewjobs.php">liste postulants</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
-                } else if ($type == "recruteur") {
+                } else if ($type == "Recruteur") {
                     echo '
 							   <li><a href="index.php">Accueil</a></li>
-							   <li><a href="uploadjob.php">Ajouter un job</a></li>
-                               <li><a href="viewjobs.php">liste des jobs</a></li>
+							   <li><a href="uploadjob.php">liste des jobs</a></li>
+                               <li><a href="viewjobs.php">liste postulants</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
-                } else if ($type == "candidat") {
+                } else if ($type == "Candidat") {
                     echo '
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="application.php">Candidature</a></li>

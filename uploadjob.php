@@ -35,7 +35,7 @@
 
 
         <div class="single">
-            <h1>Add Jobs</h1>
+            <h1>Ajouter un job</h1>
             <div class="col-md-6">
                 <form action="uploadjob.php" method="post">
 
@@ -69,6 +69,9 @@
                     <div class="form-group">
                         <input type="text" placeholder="enter a desc" name="description" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <input type="hidden" name="userid" value="<?= $_SESSION['userid'] ?>" class="form-control">
+                    </div>
 
 
                     <div class="form-group">
@@ -92,6 +95,7 @@
                 <div class="form-group">
                     <input type="text" id="myinput" placeholder="search ......" class="form-control">
                 </div>
+                <h4 class="mytitle">Liste des jobs proposés</h4>
 
                 <table class="table" id="mytable">
                     <thead>
@@ -108,10 +112,11 @@
                     </thead>
 
                     <tbody id="mytable">
-                        <?php
 
+                        <?php
+                        $userid = $_SESSION['userid'];
                         $sql = "SELECT jobs.jobid, jobs.name, categories.name as 'catname', jobs.description, jobs.date, jobs.location FROM
-                         jobs INNER JOIN categories on categories.catid = jobs.catid";
+                         jobs INNER JOIN categories on categories.catid = jobs.catid where userid = $userid";
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
                         ?>
@@ -148,7 +153,7 @@
             $location = $_POST['location'];
             $company = $_POST['company'];
 
-            $sql = "INSERT INTO `jobs`( `name`, `catid`, `description`, `date`, `location`, `company`) VALUES ('$name', '$catid', '$description','$date','$location', '$company')";
+            $sql = "INSERT INTO `jobs`( `name`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES ('$name', '$catid', '$description','$date','$location', '$company', $userid)";
             mysqli_query($con, $sql);
 
 

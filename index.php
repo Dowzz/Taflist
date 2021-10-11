@@ -18,7 +18,7 @@
 
     ?>
 
-    <?php include('job.php'); ?>
+    <?php include('jobs.php'); ?>
 
     <?php include('footer.php'); ?>
 
