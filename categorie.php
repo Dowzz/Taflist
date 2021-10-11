@@ -60,7 +60,7 @@
                     <input type="hidden" name="catid" value="<?= $catdata['catid'] ?>" class="form-control">
 
                     <div class="form-group">
-                        <input type="text" placeholder="enter a name" name="Name" value="<?= $catdata['name'] ?>"
+                        <input type="text" placeholder="enter a name" name="Name" value="<?= $catdata['catname'] ?>"
                             class="form-control">
                     </div>
 
@@ -96,7 +96,7 @@
 
                         <tr>
                             <td><?= $data['catid'] ?></td>
-                            <td><?= $data['name'] ?></td>
+                            <td><?= $data['catname'] ?></td>
 
                             <td>
                                 <a href="categorie.php?catid=<?= $data['catid'] ?>" class="btn btn-info"> Edit</a>
@@ -121,7 +121,7 @@
         if (isset($_POST['addcat'])) {
 
             $catname = $_POST['Name'];
-            $sql = "insert into categories (name) values('$catname')";
+            $sql = "insert into categories (catname) values('$catname')";
             if (mysqli_query($con, $sql)) {
                 echo "<script>alert('Add Category Successfully')</script>";
             } else {

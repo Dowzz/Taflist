@@ -53,7 +53,7 @@
                             $data = mysqli_query($con, $sql);
                             if (mysqli_num_rows($data) > 0) {
                                 while ($rs = mysqli_fetch_array($data)) {
-                            ?><option value="<?= $rs['catid'] ?>"><?= $rs['name'] ?></option><?php
+                            ?><option value="<?= $rs['catid'] ?>"><?= $rs['catname'] ?></option><?php
                                                                                             }
                                                                                         } else {
                                                                                                 ?><option>No
@@ -115,7 +115,7 @@
 
                         <?php
                         $userid = $_SESSION['userid'];
-                        $sql = "SELECT jobs.jobid, jobs.name, categories.name as 'catname', jobs.description, jobs.date, jobs.location FROM
+                        $sql = "SELECT jobs.jobid, jobs.jobname, categories.catname as 'catname', jobs.description, jobs.date, jobs.location FROM
                          jobs INNER JOIN categories on categories.catid = jobs.catid where userid = $userid";
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
@@ -123,7 +123,7 @@
 
                         <tr>
                             <td><?= $data['jobid'] ?></td>
-                            <td><?= $data['name'] ?></td>
+                            <td><?= $data['jobname'] ?></td>
                             <td><?= $data['catname'] ?></td>
                             <td><?= $data['description'] ?></td>
                             <td><?= $data['location'] ?></td>
@@ -153,12 +153,12 @@
             $location = $_POST['location'];
             $company = $_POST['company'];
 
-            $sql = "INSERT INTO `jobs`( `name`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES ('$name', '$catid', '$description','$date','$location', '$company', $userid)";
+            $sql = "INSERT INTO `jobs`( `jobname`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES ('$name', '$catid', '$description','$date','$location', '$company', $userid)";
             mysqli_query($con, $sql);
 
 
 
-            echo "<script>alert('Add Job')</script>";
+            echo "<script>alert('Job ajouté')</script>";
         }
         ?>
 

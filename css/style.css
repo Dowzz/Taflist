@@ -2784,3 +2784,10 @@ ul.grid-1 li.grid-1_right h4, ul.grid-1 li.grid-1_left h4 {
 .mytitle{
     text-align: center;
 }
+.mybox{
+    padding: 5px;
+    border: thick double #00BFF0 ;
+    margin: 5px;
+    min-height:300px;
+    text-align: center;
+}

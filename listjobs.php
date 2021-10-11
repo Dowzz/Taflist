@@ -69,7 +69,7 @@
                         <tr>
                             <td><?= $data['appid'] ?></td>
                             <td><?= $data['title'] ?></td>
-                            <td><?= $data['name'] ?></td>
+                            <td><?= $data['jobname'] ?></td>
                             <td><?= $data['cv'] ?></td>
                             <td><?= $data['date'] ?></td>
 
