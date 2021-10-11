@@ -99,8 +99,8 @@
                             <td><?= $data['name'] ?></td>
 
                             <td>
-                                <a href="categories.php?catid=<?= $data['catid'] ?>" class="btn btn-info"> Edit</a>
-                                <a href="categories.php?delcatid=<?= $data['catid'] ?>" class="btn btn-danger">
+                                <a href="categorie.php?catid=<?= $data['catid'] ?>" class="btn btn-info"> Edit</a>
+                                <a href="categorie.php?delcatid=<?= $data['catid'] ?>" class="btn btn-danger">
                                     Delete</a>
                             </td>
                         </tr>

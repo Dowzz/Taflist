@@ -78,18 +78,18 @@ if (isset($_POST['login'])) {
         $_SESSION['name'] = $name;
 
 
-        if ($role == 1) {
+        if ($role == "admin") {
 
             echo "<script>window.location.href='admin.php';</script>";
         } else if ($role == 2 || $role == 3) {
-            echo "<script> alert ('compte en attente')</script>";
-        } else if ($role == 4) {
+            echo "<script> alert ('Compte en attente')</script>";
+        } else if ($role == "consultant") {
 
             echo "<script>window.location.href='index.php';</script>";
-        } else if ($role == 5) {
+        } else if ($role == "recruteur") {
 
             echo "<script>window.location.href='index.php';</script>";
-        } else if ($role == 6) {
+        } else if ($role == "candidat") {
 
             echo "<script>window.location.href='index.php';</script>";
         } else {

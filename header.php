@@ -21,7 +21,7 @@
                 session_start();
                 $type = $_SESSION['role'];
 
-                if ($type == 1) {
+                if ($type == "admin") {
                     echo '
 							  <li><a href="admin.php">Dashboard</a></li>
 							  <li><a href="categorie.php">Catégories</a></li>
@@ -29,20 +29,20 @@
 							  <li><a href="application.php">postulants en attente</a></li>
 							  <li><a href="logout.php">Deconnexion</a></li>
 							  ';
-                } else if ($type == 4) {
+                } else if ($type == "consultant") {
                     echo '     <li><a href="admin.php">Dashboard</a></li>
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="viewjobs.php">liste des jobs</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
-                } else if ($type == 5) {
+                } else if ($type == "recruteur") {
                     echo '
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="uploadjob.php">Ajouter un job</a></li>
                                <li><a href="viewjobs.php">liste des jobs</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
-                } else if ($type == 6) {
+                } else if ($type == "candidat") {
                     echo '
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="application.php">Candidature</a></li>
@@ -57,8 +57,8 @@
                                    <li class="dropdown">
                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscription<b class="caret"></b></a>
                                        <ul class="dropdown-menu">
-                                           <li><a href="register.php?id=Recruteur&amp;roletype=2">Recruteur</a></li>
-                                           <li><a href="register.php?id=Candidat&amp;roletype=3">Candidat</a></li>
+                                           <li><a href="register.php?id=Recruteur&amp;roletype=\'waitingrec\'">Recruteur</a></li>
+                                           <li><a href="register.php?id=Candidat&amp;roletype=\'waitingcan\'">Candidat</a></li>
                                            
                                        </ul>
                                    </li>
