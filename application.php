@@ -64,6 +64,7 @@
                             $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid LEFT JOIN user on user.userid = jobs.userid where application.userid = '$var' and application.isvalid = 1";
                         } else if ($roletype == "Consultant") {
                             $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid";
+                            $sqlemail = "SELECT email from jobs left join user on user.userid = jobs.userid where jobname = '$varname'";
                         }
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
@@ -80,6 +81,7 @@
                                     if ($roletype == "Consultant") {
                                     ?>
                                 <td><input type="hidden" name="var" value="<?= $data['appid'] ?>">
+                                    <input type="hidden" name="varname" value="<?= $data['appid'] ?>">
                                     <input type="submit" name="validate" value="Validation" class="btn btn-primary">
                                     <input type="submit" name="delete" value="Supression" class="btn btn-danger">
                                 </td>
@@ -97,18 +99,43 @@
 
                             $sql = "UPDATE application SET isvalid = 1 WHERE appid = '$var'";
                             if (mysqli_query($con, $sql)) {
-                                echo "<script>alert('candidature validé')</script>";
+                                $data = mysqli_query($con, $sqlemail);
+                                $name = $data['name'];
+                                $surname = $data['surname'];
+                                $emailcand = $data['email'];
+                                $cv = $data['cv'];
+                                $bodytext = "<p>$name, $surname, $emailcand, $cv</p>";
+                                $email = new PHPMailer();
+                                $email->SetFrom('find@job.fr'); //Name is optional
+                                $email->Subject = 'Nouvelle candidature';
+                                $email->Body = $bodytext;
+                                $email->AddAddress($data);
+
+                                $file_to_attach = $data['cv'];
+
+                                $email->AddAttachment($file_to_attach, 'NameOfFile.pdf');
+
+                                return $email->Send();
+                                echo "<script>
+                        alert('candidature validé')
+                        </script>";
                             } else {
-                                echo "<script>alert('Error')</script>";
+                                echo "<script>
+                        alert('Error')
+                        </script>";
                             }
                         }
                         if (isset($_POST['delete'])) {
                             $var = $_POST['var'];
                             $sql = "DELETE FROM `application` WHERE appid = '$var'";
                             if (mysqli_query($con, $sql)) {
-                                echo "<script>alert('Demande supprimé')</script>";
+                                echo "<script>
+                        alert('Demande supprimé')
+                        </script>";
                             } else {
-                                echo "<script>alert('Error')</script>";
+                                echo "<script>
+                        alert('Error')
+                        </script>";
                             }
                         }
 
