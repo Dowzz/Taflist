@@ -33,12 +33,14 @@
                     echo '     <li><a href="admin.php">Dashboard</a></li>
 							   <li><a href="index.php">Accueil</a></li>
                                <li><a href="uploadjob.php">liste des jobs</a></li>
+                               <li><a href="application.php">postulants en attente</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';
                 } else if ($type == "Recruteur") {
                     echo '
 							   <li><a href="index.php">Accueil</a></li>
 							   <li><a href="uploadjob.php">liste des jobs</a></li>
+                               <li><a href="profil.php">Profil</a></li>
                                <li><a href="viewjobs.php">liste postulants</a></li>
 							   <li><a href="logout.php">Deconnexion</a></li>
 							';

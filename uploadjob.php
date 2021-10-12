@@ -106,7 +106,7 @@
                             <th>Description</th>
                             <th>Date</th>
                             <th>Location</th>
-                            <th>Company</th>
+                            <th>Entreprise</th>
                             <!-- <th>Action</th> -->
                         </tr>
                     </thead>
@@ -115,8 +115,14 @@
 
                         <?php
                         $userid = $_SESSION['userid'];
-                        $sql = "SELECT jobs.jobid, jobs.jobname, categories.catname as 'catname', jobs.description, jobs.date, jobs.location FROM
+                        $roletype = $_SESSION['role'];
+                        if ($roletype == "Recruteur") {
+                            $sql = "SELECT jobs.jobid, jobs.jobname, categories.catname as 'catname', jobs.description, jobs.date, jobs.location, jobs.company FROM
                          jobs INNER JOIN categories on categories.catid = jobs.catid where userid = $userid";
+                        } else {
+                            $sql = "SELECT jobs.jobid, jobs.jobname, categories.catname as 'catname', jobs.description, jobs.date, jobs.location, jobs.company FROM
+                         jobs INNER JOIN categories on categories.catid = jobs.catid";
+                        }
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
                         ?>

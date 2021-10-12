@@ -46,7 +46,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Job</th>
-                            <th>User</th>
+                            <th>Email candidat</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
                             <th>CV</th>
                             <th>Date</th>
                         </tr>
@@ -55,21 +57,17 @@
                     <tbody id="mytable">
                         <?php
 
-                        $sql = "select application.appid, application.userid, user.name , jobs.title, employer.empid, application.cv, application.date
-                              from application
-                              INNER join jobs on jobs.jobid = application.jobid
-                              INNER join employer on employer.empid = jobs.empid
-                              INNER join user on user.userid = application.userid
-                              where application.userid = '$userid'
-                              ";
+                        $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid left join user on user.userid = application.userid where jobs.userid = '$userid' and application.isvalid = 1";
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
                         ?>
 
                         <tr>
                             <td><?= $data['appid'] ?></td>
-                            <td><?= $data['title'] ?></td>
+                            <td><?= $data['jobname'] ?></td>
+                            <td><?= $data['email'] ?></td>
                             <td><?= $data['name'] ?></td>
+                            <td><?= $data['surname'] ?></td>
                             <td><?= $data['cv'] ?></td>
                             <td><?= $data['date'] ?></td>
 

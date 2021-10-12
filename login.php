@@ -66,9 +66,9 @@ if (isset($_POST['login'])) {
     if (password_verify($password, $dbpassword)) {
 
         session_start();
-        $role = $data[4];
+        $role = $data[7];
         $userid = $data[0];
-        $email = $data[3];
+        $email = $data[5];
         $name = $data[1];
 
 
