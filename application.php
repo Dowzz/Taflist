@@ -9,6 +9,10 @@
 
     include('header_link.php');
     include('connect.php');
+    include('./src/PHPMailer.php');
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
 
 
@@ -49,6 +53,7 @@
                             <th>CV</th>
                             <th>Date</th>
 
+
                         </tr>
                     </thead>
 
@@ -56,7 +61,7 @@
                         <?php
                         $roletype = $_SESSION['role'];
                         if ($roletype == "Candidat") {
-                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid where application.userid = '$userid' and application.isvalid = 1";
+                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid LEFT JOIN user on user.userid = jobs.userid where application.userid = '$var' and application.isvalid = 1";
                         } else if ($roletype == "Consultant") {
                             $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid";
                         }
@@ -70,6 +75,7 @@
                                 <td><?= $data['cv'] ?></td>
                                 <td><?= $data['date'] ?></td>
 
+
                                 <?php
                                     if ($roletype == "Consultant") {
                                     ?>
@@ -79,7 +85,6 @@
                                 </td>
                                 <?php
                                     }
-
                                     ?>
 
                             </tr>
@@ -89,7 +94,7 @@
                         }
                         if (isset($_POST['validate'])) {
                             $var = $_POST['var'];
-                            var_dump($var);
+
                             $sql = "UPDATE application SET isvalid = 1 WHERE appid = '$var'";
                             if (mysqli_query($con, $sql)) {
                                 echo "<script>alert('candidature validé')</script>";

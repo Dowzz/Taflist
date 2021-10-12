@@ -35,13 +35,13 @@
     if ($_SESSION['role'] == "admin") {
     ?><p class="mytitle">Administrateur</p>
     <?php
-    } else if ($_SESSION['role'] == "consultant") {
+    } else if ($_SESSION['role'] == "Consultant") {
     ?><span>Consultant</span>
     <?php
-    } else if ($_SESSION['role'] == "recruteur") {
+    } else if ($_SESSION['role'] == "Recruteur") {
     ?><span>Recruteur</span>
     <?php
-    } else if ($_SESSION['role'] == "candidat") {
+    } else if ($_SESSION['role'] == "Candidat") {
     ?><span>Candidat</span>
     <?php
     }
