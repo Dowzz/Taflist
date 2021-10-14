@@ -61,9 +61,9 @@
                         <?php
                         $roletype = $_SESSION['role'];
                         if ($roletype == "Candidat") {
-                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid LEFT JOIN user on user.userid = jobs.userid where application.userid = '$var' and application.isvalid = 1";
-                        } else if ($roletype == "Consultant") {
-                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid";
+                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid LEFT JOIN user on user.userid = jobs.userid where application.userid = '$userid' and application.isvalid = 1";
+                        } else if ($roletype == "Consultant" || $roletype == "admin") {
+                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid where application.isvalid=0";
                             $sqlemail = "SELECT email from jobs left join user on user.userid = jobs.userid where jobname = '$varname'";
                         }
                         $rs = mysqli_query($con, $sql);
@@ -78,7 +78,7 @@
 
 
                                 <?php
-                                    if ($roletype == "Consultant") {
+                                    if ($roletype == "Consultant" || $roletype == "admin") {
                                     ?>
                                 <td><input type="hidden" name="var" value="<?= $data['appid'] ?>">
                                     <input type="hidden" name="varname" value="<?= $data['appid'] ?>">
@@ -99,23 +99,25 @@
 
                             $sql = "UPDATE application SET isvalid = 1 WHERE appid = '$var'";
                             if (mysqli_query($con, $sql)) {
-                                $data = mysqli_query($con, $sqlemail);
-                                $name = $data['name'];
-                                $surname = $data['surname'];
-                                $emailcand = $data['email'];
-                                $cv = $data['cv'];
-                                $bodytext = "<p>$name, $surname, $emailcand, $cv</p>";
-                                $email = new PHPMailer();
-                                $email->SetFrom('find@job.fr');
-                                $email->Subject = 'Nouvelle candidature';
-                                $email->Body = $bodytext;
-                                $email->AddAddress($data);
+                                $rs = mysqli_query($con, $sqlemail);
+                                while ($data = mysqli_fetch_array($rs)) {
+                                    $name = $data['name'];
+                                    $surname = $data['surname'];
+                                    $emailcand = $data['email'];
+                                    $cv = $data['cv'];
+                                    $bodytext = "<p>$name, $surname, $emailcand, $cv</p>";
+                                    $email = new PHPMailer();
+                                    $email->SetFrom('find@job.fr');
+                                    $email->Subject = 'Nouvelle candidature';
+                                    $email->Body = $bodytext;
+                                    $email->AddAddress($data);
 
-                                $file_to_attach = $data['cv'];
+                                    $file_to_attach = $data['cv'];
 
-                                $email->AddAttachment($file_to_attach, 'NameOfFile.pdf');
+                                    $email->AddAttachment($file_to_attach, 'NameOfFile.pdf');
 
-                                return $email->Send();
+                                    return $email->Send();
+                                }
                                 echo "<script>
                         alert('candidature validé')
                         </script>";

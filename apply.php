@@ -67,8 +67,9 @@
             $date = date('d/m/y');
 
 
+
             $file = $_FILES['file']['name'];
-            $tmp = $_FILES['file']['tmp_name'];
+
 
 
             move_uploaded_file($tmp, "cv/$file");
@@ -77,8 +78,6 @@
             if (mysqli_query($con, $sql)) {
 
                 echo "<script> alert ('Merci pour votre candidature, vous serez recontacté sous peu')</script>";
-                echo "<script>window.location.href='index.php';</script>";
-
                 echo "<script>window.location.href='index.php';</script>";
             }
         }
