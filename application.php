@@ -127,15 +127,11 @@
                                     $email->AddAttachment($file_to_attach, 'NameOfFile.pdf');
 
                                     return $email->Send();
+                                    echo "<script>alert('candidature validé')</script>";
+                                    echo "<script>window.location.href='application.php';</script>";
                                 }
-                                echo "<script>
-                        alert('candidature validé')
-                        </script>";
-                                echo "<script>window.location.href='application.php';</script>";
                             } else {
-                                echo "<script>
-                        alert('Error')
-                        </script>";
+                                echo "<script>alert('Error')</script>";
                             }
                         }
                         if (isset($_POST['delete'])) {
