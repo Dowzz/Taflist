@@ -30,7 +30,7 @@
     $empid = $_SESSION['userid'];
 
 
-    // get data from id 
+    
     error_reporting(0);
     $catid = $_GET['catid'];
 
@@ -38,7 +38,7 @@
     $rs = mysqli_query($con, $sql);
     $catdata = mysqli_fetch_array($rs);
 
-    // delete category
+   
     if (isset($_GET['delcatid'])) {
         $catid = $_GET['delcatid'];
         $sql = "delete from categories where catid='$catid'";
@@ -52,11 +52,11 @@
 
 
         <div class="single">
-            <h1>Add Categories</h1>
+            <h1>Gestion des Categories</h1>
             <div class="col-md-6">
                 <form action="categorie.php" method="post">
 
-                    <!-- for get data from id in view table -->
+
                     <input type="hidden" name="catid" value="<?= $catdata['catid'] ?>" class="form-control">
 
                     <div class="form-group">

@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="form-group">
-                        <!-- <input type="text" placeholder="enter a categories" name="categories" class="form-control">   -->
+
                         <select name="catid" class="form-control">
                             <option value="">Select Categories</option>
                             <?php
@@ -107,7 +107,7 @@
                             <th>Date</th>
                             <th>Location</th>
                             <th>Entreprise</th>
-                            <!-- <th>Action</th> -->
+
                         </tr>
                     </thead>
 

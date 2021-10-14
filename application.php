@@ -106,7 +106,7 @@
                                 $cv = $data['cv'];
                                 $bodytext = "<p>$name, $surname, $emailcand, $cv</p>";
                                 $email = new PHPMailer();
-                                $email->SetFrom('find@job.fr'); //Name is optional
+                                $email->SetFrom('find@job.fr');
                                 $email->Subject = 'Nouvelle candidature';
                                 $email->Body = $bodytext;
                                 $email->AddAddress($data);
