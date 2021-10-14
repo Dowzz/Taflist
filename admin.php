@@ -94,6 +94,7 @@
                 $sql = "UPDATE user set role= '$role' where userid = '$var'";
                 if (mysqli_query($con, $sql)) {
                     echo "<script>alert('Compte validé')</script>";
+                    echo "<script>window.location.href='admin.php';</script>";
                 } else {
                     echo "<script>alert('Error')</script>";
                 }
@@ -105,6 +106,7 @@
                 $sql = "UPDATE user set role= '$role' where userid = '$var'";
                 if (mysqli_query($con, $sql)) {
                     echo "<script>alert('Consultant crée')</script>";
+                    echo "<script>window.location.href='admin.php';</script>";
                 } else {
                     echo "<script>alert('Error')</script>";
                 }
@@ -114,6 +116,7 @@
                 $sql = "DELETE FROM `user` WHERE userid = '$var'";
                 if (mysqli_query($con, $sql)) {
                     echo "<script>alert('Demande supprimé')</script>";
+                    echo "<script>window.location.href='admin.php';</script>";
                 } else {
                     echo "<script>alert('Error')</script>";
                 }

@@ -30,7 +30,7 @@
     $empid = $_SESSION['userid'];
 
 
-    
+
     error_reporting(0);
     $catid = $_GET['catid'];
 
@@ -38,7 +38,7 @@
     $rs = mysqli_query($con, $sql);
     $catdata = mysqli_fetch_array($rs);
 
-   
+
     if (isset($_GET['delcatid'])) {
         $catid = $_GET['delcatid'];
         $sql = "delete from categories where catid='$catid'";
@@ -124,6 +124,7 @@
             $sql = "insert into categories (catname) values('$catname')";
             if (mysqli_query($con, $sql)) {
                 echo "<script>alert('Add Category Successfully')</script>";
+                echo "<script>window.location.href='categorie.php';</script>";
             } else {
                 echo "<script>alert('Not Added')</script>";
             }
@@ -136,6 +137,7 @@
             $sql = "update categories set Name='$catname' where catid='$catid'";
             if (mysqli_query($con, $sql)) {
                 echo "<script>alert('Update Category Successfully')</script>";
+                echo "<script>window.location.href='category.php';</script>";
             } else {
                 echo "<script>alert('Not Updated')</script>";
             }

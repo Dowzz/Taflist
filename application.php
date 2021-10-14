@@ -119,6 +119,7 @@
                                 echo "<script>
                         alert('candidature validé')
                         </script>";
+                                echo "<script>window.location.href='application.php';</script>";
                             } else {
                                 echo "<script>
                         alert('Error')
@@ -132,6 +133,7 @@
                                 echo "<script>
                         alert('Demande supprimé')
                         </script>";
+                                echo "<script>window.location.href='application.php';</script>";
                             } else {
                                 echo "<script>
                         alert('Error')

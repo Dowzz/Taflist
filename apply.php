@@ -77,6 +77,7 @@
             if (mysqli_query($con, $sql)) {
 
                 echo "<script> alert ('Merci pour votre candidature, vous serez recontacté sous peu')</script>";
+                echo "<script>window.location.href='index.php';</script>";
 
                 echo "<script>window.location.href='index.php';</script>";
             }

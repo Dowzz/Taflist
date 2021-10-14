@@ -171,6 +171,7 @@
                     $sql = "UPDATE user set name= '$name' where userid = '$var'";
                     if (mysqli_query($con, $sql)) {
                         echo "<script>alert('Mise a jour effectué')</script>";
+                        echo "<script>window.location.href='profil.php';</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
@@ -181,6 +182,7 @@
                     $sql = "UPDATE user set company_name= '$name' where userid = '$var'";
                     if (mysqli_query($con, $sql)) {
                         echo "<script>alert('Mise a jour effectué')</script>";
+                        echo "<script>window.location.href='profil.php';</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
@@ -191,6 +193,7 @@
                     $sql = "UPDATE user set adress= '$name' where userid = '$var'";
                     if (mysqli_query($con, $sql)) {
                         echo "<script>alert('Mise a jour effectué')</script>";
+                        echo "<script>window.location.href='profil.php';</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
@@ -202,6 +205,7 @@
                     $sql = "UPDATE user set email= '$email' where userid = '$var'";
                     if (mysqli_query($con, $sql)) {
                         echo "<script>alert('Mise a jour effectué')</script>";
+                        echo "<script>window.location.href='profil.php';</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
