@@ -52,6 +52,7 @@
                             <th>Nom du job</th>
                             <th>CV</th>
                             <th>Date</th>
+                            <th>Validé ? </th>
 
 
                         </tr>
@@ -62,19 +63,28 @@
                         $roletype = $_SESSION['role'];
                         if ($roletype == "Candidat") {
                             $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid LEFT JOIN user on user.userid = jobs.userid where application.userid = '$userid' and application.isvalid = 1";
-                        } else if ($roletype == "Consultant" || $roletype == "admin") {
+                        } else if ($roletype == "Consultant") {
                             $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid where application.isvalid=0";
                             $sqlemail = "SELECT email from jobs left join user on user.userid = jobs.userid where jobname = '$varname'";
+                        } else if ($roletype == "admin") {
+                            $sql = "SELECT * FROM application LEFT JOIN jobs on jobs.jobid = application.jobid";
                         }
                         $rs = mysqli_query($con, $sql);
                         while ($data = mysqli_fetch_array($rs)) {
-                        ?>
+
+                            if ($data['isvalid'] == 0) {
+                                $valid = "non";
+                            } else if ($data['isvalid'] == 1) {
+                                $valid = "oui";
+                            }  ?>
+
                         <form action="application.php" method="post">
                             <tr>
                                 <td><?= $data['appid'] ?></td>
                                 <td><?= $data['jobname'] ?></td>
                                 <td><?= $data['cv'] ?></td>
                                 <td><?= $data['date'] ?></td>
+                                <td><?= $valid ?></td>
 
 
                                 <?php
