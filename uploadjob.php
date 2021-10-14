@@ -152,14 +152,13 @@
 
         if (isset($_POST['postjob'])) {
 
-            $name = $_POST['name'];
+            $name = $con->real_escape_string($_POST['name']);
             $catid = $_POST['catid'];
-            $description = $_POST['description'];
+            $description = $con->real_escape_string($_POST['description']);
             $date = $_POST['date'];
-            $location = $_POST['location'];
-            $company = $_POST['company'];
-
-            $sql = "INSERT INTO `jobs`( `jobname`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES (''$name'', '$catid', ''$description'','$date',''$location'', ''$company'', $userid)";
+            $location = $con->real_escape_string($_POST['location']);
+            $company = $con->real_escape_string($_POST['company']);
+            $sql = "INSERT INTO `jobs`( `jobname`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES ('$name', '$catid', '$description','$date','$location', '$company', $userid)";
             mysqli_query($con, $sql);
             echo "<script>alert('Job ajouté')</script>";
             echo "<script>window.location.href='uploadjob.php';</script>";
