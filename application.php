@@ -110,6 +110,8 @@
                             $sql = "UPDATE application SET isvalid = 1 WHERE appid = '$var'";
                             if (mysqli_query($con, $sql)) {
                                 $rs = mysqli_query($con, $sqlemail);
+                                echo "<script>alert('candidature validé')</script>";
+                                echo "<script>window.location.href='application.php';</script>";
                                 while ($data = mysqli_fetch_array($rs)) {
                                     $name = $data['name'];
                                     $surname = $data['surname'];
@@ -127,8 +129,6 @@
                                     $email->AddAttachment($file_to_attach, 'NameOfFile.pdf');
 
                                     return $email->Send();
-                                    echo "<script>alert('candidature validé')</script>";
-                                    echo "<script>window.location.href='application.php';</script>";
                                 }
                             } else {
                                 echo "<script>alert('Error')</script>";
