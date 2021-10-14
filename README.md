@@ -6,4 +6,7 @@ https://mybackofficeapp.herokuapp.com/index.php
 
 ## un compte administrateur pour le back-office est crée dans la prégénération.
 
+## pour crée un admin, il suffit d'utiliser le script Amdincreate en précisant l'adresse mail 
+Example : `UPDATE user set role= 'admin' where userid = 'Monadresse@mail'`
+
 
