@@ -162,7 +162,6 @@
             $sql = "INSERT INTO `jobs`( `jobname`, `catid`, `description`, `date`, `location`, `company`, userid) VALUES ('$name', '$catid', '$description','$date','$location', '$company', $userid)";
             mysqli_query($con, $sql);
             echo "<script>alert('Job ajouté')</script>";
-            echo "<script>window.location.href='uploadjob.php';</script>";
         }
         ?>
 
