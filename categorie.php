@@ -64,8 +64,8 @@
                             class="form-control">
                     </div>
 
-                    <input type="submit" name="addcat" value="Add Category" class="btn btn-primary">
-                    <input type="submit" name="updatecat" value="Update Category" class="btn btn-info">
+                    <input type="submit" name="addcat" value="Ajouter une catégorie" class="btn btn-primary">
+                    <input type="submit" name="updatecat" value="Mettre a jour" class="btn btn-info">
 
                 </form>
 
@@ -99,9 +99,9 @@
                             <td><?= $data['catname'] ?></td>
 
                             <td>
-                                <a href="categorie.php?catid=<?= $data['catid'] ?>" class="btn btn-info"> Edit</a>
+                                <a href="categorie.php?catid=<?= $data['catid'] ?>" class="btn btn-info">Editer</a>
                                 <a href="categorie.php?delcatid=<?= $data['catid'] ?>" class="btn btn-danger">
-                                    Delete</a>
+                                    Supprimer</a>
                             </td>
                         </tr>
 
